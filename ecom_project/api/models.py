@@ -26,12 +26,17 @@ class Product(models.Model):
     def __str__(self):
         return self.product_name
 
-class ProductReview(models.Model):
-    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.name
+
+
+
+class Review(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     rating = models.PositiveIntegerField()
     review_text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Review by {self.user.username} for {self.product.product_name}"
+        return f"Review of {self.product.name} by {self.user.username}"

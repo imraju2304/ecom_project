@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+</head>
+<body>
+    <h1>Product List</h1>
+
+    <!-- Sorting Options -->
+    <div>
+        <label for="sort">Sort by Review:</label>
+        <select name="sort" id="sort">
+            <option value="asc">Lowest to Highest</option>
+            <option value="desc">Highest to Lowest</option>
+        </select>
+        <button onclick="sortProducts()">Sort</button>
+    </div>
+
+    <!-- Product List -->
+    <ul id="product-list">
+        {% for product in products %}
+            <li>
+                <h2>{{ product.name }}</h2>
+                <p>Barcode: {{ product.barcode }}</p>
+                <p>Brand: {{ product.brand }}</p>
+                <p>Description: {{ product.description }}</p>
+                <p>Price: ${{ product.price }}</p>
+                <p>Available: {{ product.available }}</p>
+                <p>Average Rating: {{ product.average_rating }}</p>
+            </li>
+        {% empty %}
+            <li>No products available.</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Pagination -->
+    <div class="pagination">
+        <span class="step-links">
+            {% if products.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ products.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current-page">
+                Page {{ products.number }} of {{ products.paginator.num_pages }}.
+            </span>
+
+            {% if products.has_next %}
+                <a href="?page={{ products.next_page_number }}">next</a>
+                <a href="?page={{ products.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+
+    <script>
+        function sortProducts() {
+            // Get the selected sorting option
+            const sortOption = document.getElementById("sort").value;
+
+            // Redirect to the current page with the selected sorting option
+            window.location.href = `?sort=${sortOption}`;
+        }
+    </script>
+</body>
+</html>
