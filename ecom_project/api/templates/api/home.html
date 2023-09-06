@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Your E-Commerce Website</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Your E-Commerce Website</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'register' %}">Register</a></li>
+            <li><a href="{% url 'login_user' %}">Login</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <p>Welcome to our e-commerce website. Explore our products and services.</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Your E-Commerce Website</p>
+    </footer>
+</body>
+</html>

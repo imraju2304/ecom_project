@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Register Form</title>
+    </head>
+<body>
+    <center>
+    <h2>Registration Form</h2><br>
+    </center>
+
+    <div class="Register">    
+        <form  action="{% url 'api:register' %}" method="post">
+            
+            {% comment %} {% csrf_token %} {% endcomment %}
+            <label for ="user"><b>first_name</b></label>
+            <input type="text" placeholder="Enter first_name" name="first_name" required>
+             <br>
+            <label for ="user"><b>last_name</b></label>
+            <input type="text" placeholder="Enter last_name" name="last_name" required>
+
+        
+            <br>
+            <label for ="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>
+
+            <br>
+            <label for ="phone"><b>phone</b></label>
+            <input type="text" placeholder="Enter phone" name="phone" required>
+        
+            <br>
+            <label for ="password"><b>Password</b></label>
+            <input type="text" placeholder="Enter Password" name="password" required>
+
+
+            <br>
+            <input type="submit" value="register">
+        </form>     
+</div>    
+</body>    
+</html>     

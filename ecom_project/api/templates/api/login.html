@@ -1,0 +1,41 @@
+
+<html>
+    <head>
+        <title>Login Form</title>
+    </head>
+<body>
+    <center>
+    <h2>Login Form</h2><br>
+    </center>
+
+
+    <div class="login">    
+        <form action="{% url 'api:login' %}" method = "post" >
+           
+             {% csrf_token %} 
+                  
+
+        <label for ="email"><b>Email</b></label>
+        <input type="text" placeholder="email" name="email" >
+
+        <br><br>    
+        <label for ="password"><b>password</b></label>
+        <input type="password" placeholder="passwords" name="password"  >
+
+        <br><br>    
+        <input type="submit" name="log" id="log" value="Login">
+        <br><br> 
+        
+    
+    </form>  
+
+    <form action="{% url 'api:register' %}" method = "get" >
+
+        {% csrf_token %} 
+    
+    <input type="submit" name="reg" id="log" value="register">   
+
+    </form>
+</div>    
+</body>    
+</html>   
